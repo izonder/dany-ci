@@ -4,7 +4,7 @@ MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
 ENV NODE_VERSION=v8.9.4 \
     NODE_PREFIX=/usr \
-    YARN_VERSION=v1.3.2 \
+    YARN_VERSION=v1.5.1 \
     YARN_PREFIX=/usr/share/yarn \
     YARN_BINARY=/usr/bin
 
