@@ -2,9 +2,9 @@ FROM docker:17.12.0-ce
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
-ENV NODE_VERSION=v8.9.4 \
+ENV NODE_VERSION=v8.11.3 \
     NODE_PREFIX=/usr \
-    YARN_VERSION=v1.5.1 \
+    YARN_VERSION=v1.7.0 \
     YARN_PREFIX=/usr/share/yarn \
     YARN_BINARY=/usr/bin
 
