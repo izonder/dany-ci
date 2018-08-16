@@ -2,7 +2,7 @@ FROM docker:18.03.1-ce
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
-ENV NODE_VERSION=v8.11.3 \
+ENV NODE_VERSION=v8.11.4 \
     NODE_PREFIX=/usr \
     YARN_VERSION=v1.9.4 \
     YARN_PREFIX=/usr/share/yarn \
