@@ -1,4 +1,4 @@
-FROM docker:18.03.1-ce
+FROM docker:18.06.1-ce
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
