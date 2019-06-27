@@ -1,4 +1,4 @@
-FROM docker:18.09.3
+FROM docker:18.09.6
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
