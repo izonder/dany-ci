@@ -1,10 +1,10 @@
-FROM docker:18.09.6
+FROM docker:19.03.2
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
-ENV NODE_VERSION=v10.16.0 \
+ENV NODE_VERSION=v10.16.3 \
     NODE_PREFIX=/usr \
-    YARN_VERSION=v1.16.0 \
+    YARN_VERSION=v1.17.3 \
     YARN_PREFIX=/usr/share/yarn \
     YARN_BINARY=/usr/bin
 
@@ -101,5 +101,4 @@ RUN set -x \
         /node_src \
         /tmp/* \
         /var/cache/apk/* \
-        /etc/nginx/conf.d/* \
         /usr/share/man
