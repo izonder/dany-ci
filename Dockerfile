@@ -1,10 +1,10 @@
-FROM docker:19.03.2
+FROM docker:19.03.4
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
-ENV NODE_VERSION=v10.16.3 \
+ENV NODE_VERSION=v12.13.0 \
     NODE_PREFIX=/usr \
-    YARN_VERSION=v1.17.3 \
+    YARN_VERSION=v1.19.1 \
     YARN_PREFIX=/usr/share/yarn \
     YARN_BINARY=/usr/bin
 
