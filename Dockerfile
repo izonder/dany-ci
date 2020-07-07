@@ -1,8 +1,8 @@
-FROM docker:19.03.4
+FROM docker:19.03.12
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
-ENV NODE_VERSION=v12.17.0 \
+ENV NODE_VERSION=v12.18.2 \
     NODE_PREFIX=/usr \
     YARN_VERSION=v1.22.4 \
     YARN_PREFIX=/usr/share/yarn \
