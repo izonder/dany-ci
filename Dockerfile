@@ -23,7 +23,7 @@ RUN set -x \
         gnupg \
         linux-headers \
         make \
-        python \
+        python2 \
 
 ##############################################################################
 # Install Node
