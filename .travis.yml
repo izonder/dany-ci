@@ -17,4 +17,5 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push izonder/dany-ci
+  - docker tag izonder/dany-ci izonder/dany-ci:12
+  - docker push izonder/dany-ci:12
