@@ -7,6 +7,7 @@ services:
 
 before_install:
   - docker info
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build --no-cache -t izonder/dany-ci .
 
 script:
@@ -16,6 +17,5 @@ script:
   - docker run -it --rm izonder/dany-ci sh -c 'yarn global add npm'
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker tag izonder/dany-ci izonder/dany-ci:12
   - docker push izonder/dany-ci:12
