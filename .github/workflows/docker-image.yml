@@ -18,11 +18,11 @@ jobs:
           docker run --rm izonder/dany-ci sh -c 'yarn --version'
           docker run --rm izonder/dany-ci sh -c 'yarn global add npm'
       - name: Assign the tag
-        run: docker tag izonder/dany-ci izonder/dany-ci:14
+        run: docker tag izonder/dany-ci izonder/dany-ci:16
       - name: Publish the image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-          docker push izonder/dany-ci:14
+          docker push izonder/dany-ci:16
