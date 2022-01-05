@@ -1,10 +1,10 @@
-FROM docker:19.03.13
+FROM docker:20.10
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
-ENV NODE_VERSION=v14.15.4 \
+ENV NODE_VERSION=v14.18.2 \
     NODE_PREFIX=/usr \
-    YARN_VERSION=v1.22.5 \
+    YARN_VERSION=v1.22.17 \
     YARN_PREFIX=/usr/share/yarn \
     YARN_BINARY=/usr/bin
 
@@ -28,15 +28,13 @@ RUN set -x \
 ##############################################################################
 # Install Node
 # Based on https://github.com/mhart/alpine-node/blob/master/Dockerfile (thank you)
-# Note: we use ipv4.pool.sks-keyservers.net instead of ha.pool.sks-keyservers.net
-# due to the issue: https://bugs.launchpad.net/ubuntu/+source/gnupg2/+bug/1625845
+# New PGP keyservers due to: https://github.com/nodejs/docker-node/issues/1500
 ##############################################################################
 
     # gpg keys listed at https://github.com/nodejs/node#release-keys
     && for server in \
-        ipv4.pool.sks-keyservers.net \
-        keyserver.pgp.com \
-        ha.pool.sks-keyservers.net \
+        keyserver.ubuntu.com \
+        keys.openpgp.org \
     ; do \
         gpg --keyserver $server --recv-keys \
             4ED778F539E3634C779C87C6D7062848A1AB005C \
@@ -74,11 +72,10 @@ RUN set -x \
 ##############################################################################
 
     && for server in \
-       ipv4.pool.sks-keyservers.net \
-       keyserver.pgp.com \
-       ha.pool.sks-keyservers.net \
+        keyserver.ubuntu.com \
+        keys.openpgp.org \
    ; do \
-       gpg --keyserver $server --recv-keys \
+        gpg --keyserver $server --recv-keys \
             6A010C5166006599AA17F08146C2130DFD2497F5 \
         && break; \
     done \
