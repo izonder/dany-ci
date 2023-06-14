@@ -2,7 +2,7 @@
 
 **DANY-CI** = **D**ocker + **A**lpine + **N**ode.js + **Y**arn + **CI**
 
-[![Build Docker image](https://github.com/izonder/dany-ci/actions/workflows/docker-image.yml/badge.svg?branch=nodejs-16)](https://github.com/izonder/dany-ci/actions/workflows/docker-image.yml)
+[![Build Docker image](https://github.com/izonder/dany-ci/actions/workflows/docker-image.yml/badge.svg?branch=nodejs-18)](https://github.com/izonder/dany-ci/actions/workflows/docker-image.yml)
 
 ## Features
 
@@ -27,7 +27,7 @@ unit:
         - yarn install
         - yarn test
 
-image:
+build:
     stage: build
     scripts:
         - yarn install
