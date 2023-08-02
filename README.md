@@ -27,7 +27,7 @@ unit:
         - yarn install
         - yarn test
 
-image:
+build:
     stage: build
     scripts:
         - yarn install

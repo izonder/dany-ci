@@ -1,8 +1,8 @@
-FROM docker:20.10
+FROM docker:23.0
 
 MAINTAINER Dmitry Morgachev <izonder@gmail.com>
 
-ENV NODE_VERSION=v16.20.0 \
+ENV NODE_VERSION=v18.16.0 \
     NODE_PREFIX=/usr \
     NODE_RELEASE_KEYS=https://raw.githubusercontent.com/nodejs/release-keys/HEAD \
     YARN_VERSION=v1.22.19 \
@@ -33,6 +33,7 @@ RUN set -eux \
         linux-headers \
         make \
         python3 \
+        xz \
 \
 ##############################################################################
 # Install Node
@@ -48,14 +49,14 @@ RUN set -eux \
     # Download and validate the NodeJs source
     && mkdir /node_src \
     && cd /node_src \
-    && curl -o node-${NODE_VERSION}.tar.gz -sSL https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}.tar.gz \
-    && curl -o SHASUMS256.txt.asc -sSL https://nodejs.org/dist/${NODE_VERSION}/SHASUMS256.txt.asc \
-    && gpg --verify SHASUMS256.txt.asc \
-    && grep node-${NODE_VERSION}.tar.gz SHASUMS256.txt.asc | sha256sum -c - \
+    && curl -o node-${NODE_VERSION}.tar.xz -fsSLO --compressed https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}.tar.xz \
+    && curl -o SHASUMS256.txt.asc -fsSLO --compressed https://nodejs.org/dist/${NODE_VERSION}/SHASUMS256.txt.asc \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && grep " node-${NODE_VERSION}.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
 \
     # Compile and install
     && cd /node_src \
-    && tar -zxf node-${NODE_VERSION}.tar.gz \
+    && tar -Jxpf node-${NODE_VERSION}.tar.xz \
     && cd node-${NODE_VERSION} \
     && ./configure --prefix=${NODE_PREFIX} --without-npm \
     && make -j$(getconf _NPROCESSORS_ONLN) V= \
